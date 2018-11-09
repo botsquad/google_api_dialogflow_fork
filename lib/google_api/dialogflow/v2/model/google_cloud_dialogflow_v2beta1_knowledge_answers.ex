@@ -16,31 +16,35 @@
 # https://github.com/swagger-api/swagger-codegen.git
 # Do not edit the class manually.
 
-defmodule GoogleApi.Dialogflow.V2.Model.GoogleCloudDialogflowV2beta1IntentFollowupIntentInfo do
+defmodule GoogleApi.Dialogflow.V2.Model.GoogleCloudDialogflowV2beta1KnowledgeAnswers do
   @moduledoc """
-  Represents a single followup intent in the chain.
+  Represents the result of querying a Knowledge base.
 
   ## Attributes
 
-  - followupIntentName (String.t): The unique identifier of the followup intent. Format: &#x60;projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;&#x60;. Defaults to: `null`.
-  - parentFollowupIntentName (String.t): The unique identifier of the followup intent&#39;s parent. Format: &#x60;projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;&#x60;. Defaults to: `null`.
+  - answers ([GoogleCloudDialogflowV2beta1KnowledgeAnswersAnswer]): A list of answers from Knowledge Connector. Defaults to: `null`.
   """
 
   use GoogleApi.Gax.ModelBase
 
   @type t :: %__MODULE__{
-          :followupIntentName => any(),
-          :parentFollowupIntentName => any()
+          :answers =>
+            list(
+              GoogleApi.Dialogflow.V2.Model.GoogleCloudDialogflowV2beta1KnowledgeAnswersAnswer.t()
+            )
         }
 
-  field(:followupIntentName)
-  field(:parentFollowupIntentName)
+  field(
+    :answers,
+    as: GoogleApi.Dialogflow.V2.Model.GoogleCloudDialogflowV2beta1KnowledgeAnswersAnswer,
+    type: :list
+  )
 end
 
 defimpl Poison.Decoder,
-  for: GoogleApi.Dialogflow.V2.Model.GoogleCloudDialogflowV2beta1IntentFollowupIntentInfo do
+  for: GoogleApi.Dialogflow.V2.Model.GoogleCloudDialogflowV2beta1KnowledgeAnswers do
   def decode(value, options) do
-    GoogleApi.Dialogflow.V2.Model.GoogleCloudDialogflowV2beta1IntentFollowupIntentInfo.decode(
+    GoogleApi.Dialogflow.V2.Model.GoogleCloudDialogflowV2beta1KnowledgeAnswers.decode(
       value,
       options
     )
@@ -48,7 +52,7 @@ defimpl Poison.Decoder,
 end
 
 defimpl Poison.Encoder,
-  for: GoogleApi.Dialogflow.V2.Model.GoogleCloudDialogflowV2beta1IntentFollowupIntentInfo do
+  for: GoogleApi.Dialogflow.V2.Model.GoogleCloudDialogflowV2beta1KnowledgeAnswers do
   def encode(value, options) do
     GoogleApi.Gax.ModelBase.encode(value, options)
   end

@@ -16,31 +16,32 @@
 # https://github.com/swagger-api/swagger-codegen.git
 # Do not edit the class manually.
 
-defmodule GoogleApi.Dialogflow.V2.Model.GoogleCloudDialogflowV2beta1IntentFollowupIntentInfo do
+defmodule GoogleApi.Dialogflow.V2.Model.GoogleCloudDialogflowV2beta1HumanAgentAssistantEvent do
   @moduledoc """
-  Represents a single followup intent in the chain.
+  Represents a notification sent to Cloud Pub/Sub subscribers for agent assistant events in a specific conversation.
 
   ## Attributes
 
-  - followupIntentName (String.t): The unique identifier of the followup intent. Format: &#x60;projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;&#x60;. Defaults to: `null`.
-  - parentFollowupIntentName (String.t): The unique identifier of the followup intent&#39;s parent. Format: &#x60;projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;&#x60;. Defaults to: `null`.
+  - conversation (String.t): Required. The conversation this notification refers to. Format: &#x60;projects/&lt;Project ID&gt;/conversations/&lt;Conversation ID&gt;&#x60;. Defaults to: `null`.
+  - type (String.t): Required. The type of the event that this notification refers to. Defaults to: `null`.
+    - Enum - one of [TYPE_UNSPECIFIED, NEW_SUGGESTION]
   """
 
   use GoogleApi.Gax.ModelBase
 
   @type t :: %__MODULE__{
-          :followupIntentName => any(),
-          :parentFollowupIntentName => any()
+          :conversation => any(),
+          :type => any()
         }
 
-  field(:followupIntentName)
-  field(:parentFollowupIntentName)
+  field(:conversation)
+  field(:type)
 end
 
 defimpl Poison.Decoder,
-  for: GoogleApi.Dialogflow.V2.Model.GoogleCloudDialogflowV2beta1IntentFollowupIntentInfo do
+  for: GoogleApi.Dialogflow.V2.Model.GoogleCloudDialogflowV2beta1HumanAgentAssistantEvent do
   def decode(value, options) do
-    GoogleApi.Dialogflow.V2.Model.GoogleCloudDialogflowV2beta1IntentFollowupIntentInfo.decode(
+    GoogleApi.Dialogflow.V2.Model.GoogleCloudDialogflowV2beta1HumanAgentAssistantEvent.decode(
       value,
       options
     )
@@ -48,7 +49,7 @@ defimpl Poison.Decoder,
 end
 
 defimpl Poison.Encoder,
-  for: GoogleApi.Dialogflow.V2.Model.GoogleCloudDialogflowV2beta1IntentFollowupIntentInfo do
+  for: GoogleApi.Dialogflow.V2.Model.GoogleCloudDialogflowV2beta1HumanAgentAssistantEvent do
   def encode(value, options) do
     GoogleApi.Gax.ModelBase.encode(value, options)
   end

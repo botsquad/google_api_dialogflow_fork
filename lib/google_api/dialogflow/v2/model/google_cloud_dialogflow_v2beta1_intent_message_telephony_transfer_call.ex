@@ -16,31 +16,29 @@
 # https://github.com/swagger-api/swagger-codegen.git
 # Do not edit the class manually.
 
-defmodule GoogleApi.Dialogflow.V2.Model.GoogleCloudDialogflowV2beta1IntentFollowupIntentInfo do
+defmodule GoogleApi.Dialogflow.V2.Model.GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCall do
   @moduledoc """
-  Represents a single followup intent in the chain.
+  Transfers the call in Telephony Gateway.
 
   ## Attributes
 
-  - followupIntentName (String.t): The unique identifier of the followup intent. Format: &#x60;projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;&#x60;. Defaults to: `null`.
-  - parentFollowupIntentName (String.t): The unique identifier of the followup intent&#39;s parent. Format: &#x60;projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;&#x60;. Defaults to: `null`.
+  - phoneNumber (String.t): Required. The phone number to transfer the call to in [E.164 format](https://en.wikipedia.org/wiki/E.164).  We currently only allow transferring to US numbers (+1xxxyyyzzzz). Defaults to: `null`.
   """
 
   use GoogleApi.Gax.ModelBase
 
   @type t :: %__MODULE__{
-          :followupIntentName => any(),
-          :parentFollowupIntentName => any()
+          :phoneNumber => any()
         }
 
-  field(:followupIntentName)
-  field(:parentFollowupIntentName)
+  field(:phoneNumber)
 end
 
 defimpl Poison.Decoder,
-  for: GoogleApi.Dialogflow.V2.Model.GoogleCloudDialogflowV2beta1IntentFollowupIntentInfo do
+  for:
+    GoogleApi.Dialogflow.V2.Model.GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCall do
   def decode(value, options) do
-    GoogleApi.Dialogflow.V2.Model.GoogleCloudDialogflowV2beta1IntentFollowupIntentInfo.decode(
+    GoogleApi.Dialogflow.V2.Model.GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCall.decode(
       value,
       options
     )
@@ -48,7 +46,8 @@ defimpl Poison.Decoder,
 end
 
 defimpl Poison.Encoder,
-  for: GoogleApi.Dialogflow.V2.Model.GoogleCloudDialogflowV2beta1IntentFollowupIntentInfo do
+  for:
+    GoogleApi.Dialogflow.V2.Model.GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCall do
   def encode(value, options) do
     GoogleApi.Gax.ModelBase.encode(value, options)
   end

@@ -16,31 +16,32 @@
 # https://github.com/swagger-api/swagger-codegen.git
 # Do not edit the class manually.
 
-defmodule GoogleApi.Dialogflow.V2.Model.GoogleCloudDialogflowV2beta1IntentFollowupIntentInfo do
+defmodule GoogleApi.Dialogflow.V2.Model.GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeech do
   @moduledoc """
-  Represents a single followup intent in the chain.
+  Synthesizes speech and plays back the synthesized audio to the caller in Telephony Gateway.  Telephony Gateway takes the synthesizer settings from &#x60;DetectIntentResponse.output_audio_config&#x60; which can either be set at request-level or can come from the agent-level synthesizer config.
 
   ## Attributes
 
-  - followupIntentName (String.t): The unique identifier of the followup intent. Format: &#x60;projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;&#x60;. Defaults to: `null`.
-  - parentFollowupIntentName (String.t): The unique identifier of the followup intent&#39;s parent. Format: &#x60;projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;&#x60;. Defaults to: `null`.
+  - ssml (String.t): The SSML to be synthesized. For more information, see [SSML](https://developers.google.com/actions/reference/ssml). Defaults to: `null`.
+  - text (String.t): The raw text to be synthesized. Defaults to: `null`.
   """
 
   use GoogleApi.Gax.ModelBase
 
   @type t :: %__MODULE__{
-          :followupIntentName => any(),
-          :parentFollowupIntentName => any()
+          :ssml => any(),
+          :text => any()
         }
 
-  field(:followupIntentName)
-  field(:parentFollowupIntentName)
+  field(:ssml)
+  field(:text)
 end
 
 defimpl Poison.Decoder,
-  for: GoogleApi.Dialogflow.V2.Model.GoogleCloudDialogflowV2beta1IntentFollowupIntentInfo do
+  for:
+    GoogleApi.Dialogflow.V2.Model.GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeech do
   def decode(value, options) do
-    GoogleApi.Dialogflow.V2.Model.GoogleCloudDialogflowV2beta1IntentFollowupIntentInfo.decode(
+    GoogleApi.Dialogflow.V2.Model.GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeech.decode(
       value,
       options
     )
@@ -48,7 +49,8 @@ defimpl Poison.Decoder,
 end
 
 defimpl Poison.Encoder,
-  for: GoogleApi.Dialogflow.V2.Model.GoogleCloudDialogflowV2beta1IntentFollowupIntentInfo do
+  for:
+    GoogleApi.Dialogflow.V2.Model.GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeech do
   def encode(value, options) do
     GoogleApi.Gax.ModelBase.encode(value, options)
   end
