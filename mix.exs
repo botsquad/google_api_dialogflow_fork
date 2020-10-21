@@ -22,11 +22,11 @@ defmodule GoogleApi.Dialogflow.Mixfile do
 
   def project() do
     [
-      app: :google_api_dialogflow,
+      app: :google_api_dialogflow_fork,
       version: @version,
       elixir: "~> 1.6",
-      build_embedded: Mix.env == :prod,
-      start_permanent: Mix.env == :prod,
+      build_embedded: Mix.env() == :prod,
+      start_permanent: Mix.env() == :prod,
       description: description(),
       package: package(),
       deps: deps(),
@@ -41,7 +41,6 @@ defmodule GoogleApi.Dialogflow.Mixfile do
   defp deps() do
     [
       {:google_gax, "~> 0.4"},
-
       {:ex_doc, "~> 0.16", only: :dev}
     ]
   end
@@ -58,7 +57,8 @@ defmodule GoogleApi.Dialogflow.Mixfile do
       maintainers: ["Jeff Ching", "Daniel Azuma"],
       licenses: ["Apache 2.0"],
       links: %{
-        "GitHub" => "https://github.com/googleapis/elixir-google-api/tree/master/clients/dialogflow",
+        "GitHub" =>
+          "https://github.com/googleapis/elixir-google-api/tree/master/clients/dialogflow",
         "Homepage" => "https://cloud.google.com/dialogflow/"
       }
     ]
