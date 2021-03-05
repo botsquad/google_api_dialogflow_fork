@@ -12,8 +12,12 @@ defmodule GoogleApi.Dialogflow.V2.SelectBaseUrl do
   @zones ~w(europe-west2 asia-northeast1 australia-southeast1)
   defp select_base_url(zone, url) when zone in @zones do
     url = "https://#{zone}-dialogflow.googleapis.com" <> url
-
-    Regex.replace(~r|(projects/[^/]+)|, url, "\\1/locations/" <> zone)
+    
+    if !String.contains?(url, "locations") do
+      Regex.replace(~r|(projects/[^/]+)|, url, "\\1/locations/" <> zone)
+    else
+      url
+    end
     |> String.replace("/v2/", "/v2beta1/")
   end
 
